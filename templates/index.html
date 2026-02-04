@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flipkart Review Sentiment Analysis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        :root {
+            --bg-main: #0b1220;
+            --bg-card: #121a2f;
+            --accent: #5eead4;
+            --text-main: #e5e7eb;
+            --text-muted: #9ca3af;
+            --border-soft: #253052;
+            --positive: #22c55e;
+            --negative: #ef4444;
+            --neutral: #facc15;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--bg-main);
+            font-family: Inter, Arial, sans-serif;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: var(--bg-card);
+            width: 600px;
+            max-width: 90%;
+            padding: 32px;
+            border-radius: 14px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        p.subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-soft);
+            background: var(--bg-main);
+            color: var(--text-main);
+            resize: none;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: var(--accent);
+            color: #000;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .result {
+            margin-top: 24px;
+            padding: 16px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .positive { color: var(--positive); }
+        .negative { color: var(--negative); }
+        .neutral { color: var(--neutral); }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Sentiment Analysis</h1>
+    <p class="subtitle">Flipkart Product Review Classification</p>
+
+    <form method="POST">
+        <textarea name="review" placeholder="Paste a product review here..." required></textarea>
+        <button type="submit">Predict Sentiment</button>
+    </form>
+
+    {% if sentiment is not none %}
+    <div class="result">
+        Sentiment Result:
+        {% if sentiment == 1 %}
+            <span class="positive">Positive 😊</span>
+        {% elif sentiment == 0 %}
+            <span class="negative">Negative 😞</span>
+        {% else %}
+            <span class="neutral">Neutral 😐</span>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
