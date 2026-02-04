@@ -90,15 +90,27 @@ Trained and compared multiple models:
 👉 **http://54.163.218.199:5000/**
 
 ---
-
-## 🛠 How to Run Locally
+## ⚙️ Setup Notes (Important)
 
 ```bash
 git clone https://github.com/mayurks23/sentiment-analysis-flask.git
 cd sentiment-analysis-flask
 pip install -r requirements.txt
+```
+This project uses NLTK for text preprocessing.  
+Before running the Flask application, please download the required NLTK resources once:
+
+```bash
+python
+>>> import nltk
+>>> nltk.download('stopwords')
+>>> nltk.download('wordnet')
+>>> nltk.download('omw-1.4')
+```
+## 🛠 How to Run Locally
+```bash
 python app.py
-````
+```
 
 ---
 
